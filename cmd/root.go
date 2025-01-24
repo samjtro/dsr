@@ -30,7 +30,7 @@ func start(client *dsr.ChatClient) {
 	client.AddMessage(res.Choices[0].Message)
 	result := markdown.Render(res.Choices[0].Message.Content, 80, 6)
 	fmt.Println()
-	fmt.Println(result)
+	fmt.Println(string(result))
 	fmt.Println()
 	start(client)
 }
