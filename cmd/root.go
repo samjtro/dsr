@@ -28,7 +28,7 @@ func start(client *dsr.ChatClient) {
 	res, _ := client.GetNextChatCompletion()
 	client.AddMessage(res.Choices[0].Message)
 	fmt.Println()
-	fmt.Println(res.Choices[0].Message)
+	fmt.Println(res.Choices[0].Message.Content)
 	fmt.Println()
 	start(client)
 }
