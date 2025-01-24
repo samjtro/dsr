@@ -40,18 +40,12 @@ func execCommand(cmd *exec.Cmd) {
 }
 
 func read() string {
-	// Initiate user input reader
 	reader := bufio.NewReader(os.Stdin)
-
-	// Print the instruction to the reader in the console
-	fmt.Println("Please enter your API key below:")
-
-	// Call the reader to read user's input
+	fmt.Print("> ")
 	key, err := reader.ReadString('\n')
 	if err != nil {
 		panic(err)
 	}
-
 	return key
 }
 
