@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 
+	markdown "github.com/MichaelMure/go-term-markdown"
 	"github.com/samjtro/go-dsr"
 	"github.com/spf13/cobra"
 )
@@ -27,8 +28,9 @@ func start(client *dsr.ChatClient) {
 	client.AddUserMessage(q)
 	res, _ := client.GetNextChatCompletion()
 	client.AddMessage(res.Choices[0].Message)
+	result := markdown.Render(res.Choices[0].Message.Content, 80, 6)
 	fmt.Println()
-	fmt.Println(res.Choices[0].Message.Content)
+	fmt.Println(result)
 	fmt.Println()
 	start(client)
 }
